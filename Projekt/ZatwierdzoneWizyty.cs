@@ -11,10 +11,10 @@ using System.Windows.Forms;
 namespace Projekt
 {
     // Panel obsługujący wyświetlenie informacji pacjentowi wraz z ich statusem
-    public partial class ZatwierdzoneWizyty : Form
+    public partial class ApproveVisit : Form
     {
         // Połączenie z bazą danych i wczytanie wizyt danego pacjenta
-        public ZatwierdzoneWizyty(string idpacjent)
+        public ApproveVisit(string idPatient)
         {
             InitializeComponent();
             //Ustawienie stałych rozmiarów okna
@@ -22,41 +22,41 @@ namespace Projekt
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
 
-            List<List<string>> informacjeoWizycie;
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> wizyta = new List<string>();
-            string warunek = "IdPacjent='" + idpacjent + "'";
-            List<string> tabele = new List<string>
+            List<List<string>> VisitInformation;
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            List<string> Visit = new List<string>();
+            string Condition = "IdPacjent='" + idPatient + "'";
+            List<string> Columns = new List<string>
             {
                 "ID", "DataWizyty", "Godzina","Status"
             };
             // Edycja wczytanych danych w celu przygotowania widoku dla pacjenta
-            informacjeoWizycie = wczytaj.WczytajRekordy("Wizyta", tabele,warunek);
-            foreach (var item in informacjeoWizycie)
+            VisitInformation = Load.LoadData("Wizyta", Columns,Condition);
+            foreach (var item in VisitInformation)
             {
-                var status = item[3];
-                if (status == "0")
+                var State = item[3];
+                if (State == "0")
                 {
-                    status = "Nieprzetworzone";
+                    State = "Nieprzetworzone";
                 }
-                else if (status == "1")
+                else if (State == "1")
                 {
-                    status = "Zatwierdzony";
+                    State = "Zatwierdzony";
                 }
-                else if(status == "2")
+                else if(State == "2")
                 {
-                    status = "Odrzucony";
+                    State = "Odrzucony";
                 }
-                else if(status == "3")
+                else if(State == "3")
                 {
-                    status = "Odbyte";
+                    State = "Odbyte";
                 }
 
-                dataGridView1.Rows.Add(item[1].Substring(0,10), item[2].Remove(0,11), status);
+                dataGridView1.Rows.Add(item[1].Substring(0,10), item[2].Remove(0,11), State);
             }
         }
         //Powrót do panelu głównego
-        private void label3_Click(object sender, EventArgs e)
+        private void Label3_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Dispose();

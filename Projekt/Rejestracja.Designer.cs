@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class Rejestracja
+    partial class Registration
     {
         /// <summary>
         /// Required designer variable.
@@ -132,7 +132,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Zarejestruj";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // pictureBox1
             // 
@@ -151,7 +151,7 @@
             this.label6.Size = new System.Drawing.Size(48, 25);
             this.label6.TabIndex = 11;
             this.label6.Text = "<<<";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // age
             // 
@@ -192,7 +192,7 @@
             this.Name = "Rejestracja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rejestracja";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.label6_Click);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Label6_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

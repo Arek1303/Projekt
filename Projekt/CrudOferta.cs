@@ -10,43 +10,42 @@ using System.Windows.Forms;
 
 namespace Projekt
 {
-    public partial class CrudOferta : Form
+    public partial class OfferCrud : Form
     {
         //Wywołanie panelu zarządzania oferatmi
-        public CrudOferta()
+        public OfferCrud()
         {
             InitializeComponent();
             //Ustawienie stałych rozmiarów okna
             this.MinimumSize = new Size(668, 382);
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
-            MetodaWczytania();
+            LoadData();
         }
         // Połączenie z bazą i wczytanie ofert
-        public void MetodaWczytania()
+        public void LoadData()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<List<string>> informacjeopacjencie;
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> pacjent = new List<string>();
-            List<string> tabele = new List<string>
+            List<List<string>> PatientInformation;
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            List<string> Columns = new List<string>
             {
                 "ID", "Nazwa", "Opis", "Cena"
             };
-            informacjeopacjencie = wczytaj.WczytajRekordy("Oferta", tabele);
-            foreach (var item in informacjeopacjencie)
+            PatientInformation = Load.LoadData("Oferta", Columns);
+            foreach (var item in PatientInformation)
             {
                 dataGridView1.Rows.Add(item[0], item[1], item[2], item[3]);
             }
         }
         // Metoda usuwania ofert
-        private void btnUsun_Click(object sender, EventArgs e)
+        private void BtnUsun_Click(object sender, EventArgs e)
         {
-            string idusuwanego = dataGridView1.SelectedCells[0].Value.ToString();
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            wczytaj.UsunDane("id = '" + idusuwanego + "'", "Oferta");
-            MetodaWczytania();
+            string ChoosenId = dataGridView1.SelectedCells[0].Value.ToString();
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            Load.DeleteData("id = '" + ChoosenId + "'", "Oferta");
+            LoadData();
         }
        
 
@@ -74,8 +73,8 @@ namespace Projekt
         {
             WczytywanieZBazy wczytaj = new WczytywanieZBazy();
             List<string> dane = new List<string> { txtNazwa.Text, txtOpis.Text, txtCena.Text };
-            wczytaj.WyslijNoweDane(dane, "Oferta (Nazwa,Opis,Cena)");
-            MetodaWczytania();
+            wczytaj.SendData(dane, "Oferta (Nazwa,Opis,Cena)");
+            LoadData();
         }
         //Metoda edycji oferty
         private void BtnEdytuj_Click(object sender, EventArgs e)
@@ -89,8 +88,8 @@ namespace Projekt
             {
                 dane.Add(item);
             }
-            wczytaj.WyslijUpdate(dane, "Oferta ");
-            MetodaWczytania();
+            wczytaj.SendUpdate(dane, "Oferta ");
+            LoadData();
         }
         //Metoda powrotu do głównego panelu
         private void CrudOferta_FormClosed(object sender, FormClosedEventArgs e)

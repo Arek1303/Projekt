@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class EdytujDane
+    partial class AccountEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -147,7 +147,7 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "Zapisz zmiany";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label6
             // 
@@ -158,7 +158,7 @@
             this.label6.Size = new System.Drawing.Size(39, 20);
             this.label6.TabIndex = 25;
             this.label6.Text = "<<<";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // EdytujDane
             // 

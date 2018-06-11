@@ -10,7 +10,7 @@ namespace Projekt
    public class WczytywanieZBazy
     {
         // Klasa zawierająca metody obsługujące operacje na bazie danych
-        public List<List<string>> WczytajRekordy(string tabela, List<string> nazwyKolumn)
+        public List<List<string>> LoadData(string table, List<string> columnsName)
         {
             //Nawiązanie połączenia z bazą danych
             var auth = new Authentication();
@@ -18,21 +18,21 @@ namespace Projekt
 
             using (SQLiteConnection con = new SQLiteConnection(auth.connectionString))
             {
-                List<List<string>> listaRekordow = new List<List<string>>();
-                List<string> listaWartosci = new List<string>();
+                List<List<string>> RecordsList = new List<List<string>>();
+                List<string> ValueList = new List<string>();
                 con.Open();
                 SQLiteCommand cmd = new SQLiteCommand();
-                int ilosc = nazwyKolumn.Count();
+                int Count = columnsName.Count();
 
-                string query = @"SELECT " + nazwyKolumn[0];
-                if (ilosc > 1)
+                string query = @"SELECT " + columnsName[0];
+                if (Count > 1)
                 {
-                    for (int i = 1; i < ilosc; i++)
+                    for (int i = 1; i < Count; i++)
                     {
-                        query += "," + nazwyKolumn[i];
+                        query += "," + columnsName[i];
                     }
                 }
-                query+= " FROM " + tabela;
+                query+= " FROM " + table;
 
                 cmd.CommandText = query;
                 cmd.Connection = con;
@@ -40,8 +40,8 @@ namespace Projekt
                 SQLiteDataReader read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    int liczbaZmiennych = read.FieldCount;
-                    for (int i = 0; i < liczbaZmiennych; i++)
+                    int VariableCount = read.FieldCount;
+                    for (int i = 0; i < VariableCount; i++)
                     {
                         Type t = typeof(System.Int64);
                         Type d = typeof(System.DateTime);
@@ -49,47 +49,47 @@ namespace Projekt
 
                         if (read.GetFieldType(i).Equals(t))
                         {
-                            listaWartosci.Add(read.GetFieldValue<long>(i).ToString());
+                            ValueList.Add(read.GetFieldValue<long>(i).ToString());
                         }
                         else if(read.GetFieldType(i).Equals(d))
                         {
-                            listaWartosci.Add(read.GetFieldValue<DateTime>(i).ToString());
+                            ValueList.Add(read.GetFieldValue<DateTime>(i).ToString());
                         }
                         else
                         {
-                            listaWartosci.Add(read.GetFieldValue<string>(i));
+                            ValueList.Add(read.GetFieldValue<string>(i));
                         }              
                     }
-                    listaRekordow.Add(listaWartosci);
-                    listaWartosci = new List<string>();
+                    RecordsList.Add(ValueList);
+                    ValueList = new List<string>();
                 }
-                return listaRekordow;
+                return RecordsList;
             }
         }
         // Metoda obsługująca wczytanie rekordów z bazy danych
-        public List<List<string>> WczytajRekordy(string tabela, List<string> nazwyKolumn, string warunki)
+        public List<List<string>> LoadData(string table, List<string> columnsName, string conditions)
         {
             var auth = new Authentication();
             auth.getConnection();
 
             using (SQLiteConnection con = new SQLiteConnection(auth.connectionString))
             {
-                List<List<string>> listaRekordow = new List<List<string>>();
-                List<string> listaWartosci = new List<string>();
+                List<List<string>> RecordsList = new List<List<string>>();
+                List<string> ValueList = new List<string>();
                 con.Open();
                 SQLiteCommand cmd = new SQLiteCommand();
-                int ilosc = nazwyKolumn.Count();
+                int count = columnsName.Count();
 
-                string query = @"SELECT " + nazwyKolumn[0];
-                if (ilosc > 1)
+                string query = @"SELECT " + columnsName[0];
+                if (count > 1)
                 {
-                    for (int i = 1; i < ilosc; i++)
+                    for (int i = 1; i < count; i++)
                     {
-                        query += "," + nazwyKolumn[i];
+                        query += "," + columnsName[i];
                     }
                 }
-                query += " FROM " + tabela;
-                query += " WHERE " + warunki;
+                query += " FROM " + table;
+                query += " WHERE " + conditions;
 
                 cmd.CommandText = query;
                 cmd.Connection = con;
@@ -97,35 +97,35 @@ namespace Projekt
                 SQLiteDataReader read = cmd.ExecuteReader();
                 while (read.Read())
                 {
-                    int liczbaZmiennych = read.FieldCount;
-                    for (int i = 0; i < liczbaZmiennych; i++)
+                    int VariableCount = read.FieldCount;
+                    for (int i = 0; i < VariableCount; i++)
                     {
                         Type t = typeof(System.Int64);
                         Type d = typeof(System.DateTime);
                         if (read.GetFieldType(i).Equals(t))
                         {
-                            listaWartosci.Add(read.GetFieldValue<long>(i).ToString());
+                            ValueList.Add(read.GetFieldValue<long>(i).ToString());
                         }
                         else if (read.GetFieldType(i).Equals(d))
                         {
-                            listaWartosci.Add(read.GetFieldValue<DateTime>(i).ToString());
+                            ValueList.Add(read.GetFieldValue<DateTime>(i).ToString());
                         }
                         else
                         {
-                            listaWartosci.Add(read.GetFieldValue<string>(i));
+                            ValueList.Add(read.GetFieldValue<string>(i));
                         }
 
                     }
-                    listaRekordow.Add(listaWartosci);
-                    listaWartosci = new List<string>();
+                    RecordsList.Add(ValueList);
+                    ValueList = new List<string>();
                 }
 
-                return listaRekordow;
+                return RecordsList;
             }
 
         }
         // Metoda obsługująca edycja zawartości rekordów bazy danych
-        public void WyslijUpdate(List<string> dane, string tabela)
+        public void SendUpdate(List<string> date, string table)
         {
             var auth = new Authentication();
             auth.getConnection();
@@ -134,22 +134,22 @@ namespace Projekt
             {
                 con.Open();
                 SQLiteCommand cmd = new SQLiteCommand();
-                string query = @"UPDATE " + tabela + " SET " + dane[1];
-                if (dane.Count > 2)
+                string query = @"UPDATE " + table + " SET " + date[1];
+                if (date.Count > 2)
                 {
-                    for (int i = 2; i < dane.Count; i++)
+                    for (int i = 2; i < date.Count; i++)
                     {
-                        query += ", " +dane[i];
+                        query += ", " +date[i];
                     }
                 }
-                query += " WHERE " + dane[0];
+                query += " WHERE " + date[0];
                 cmd.CommandText = query;
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
             }
         }
         // Metoda wstawiająca nowe dane do bazy danych
-        public void WyslijNoweDane(List<string> dane, string tabela)
+        public void SendData(List<string> date, string table)
         {
             var auth = new Authentication();
             auth.getConnection();
@@ -158,12 +158,12 @@ namespace Projekt
             {
                 con.Open();
                 SQLiteCommand cmd = new SQLiteCommand();
-                string query = @"INSERT INTO " + tabela + " VALUES (" + "'"+ dane[0] + "'";
-                if (dane.Count > 1)
+                string query = @"INSERT INTO " + table + " VALUES (" + "'"+ date[0] + "'";
+                if (date.Count > 1)
                 {
-                    for (int i = 1; i < dane.Count; i++)
+                    for (int i = 1; i < date.Count; i++)
                     {
-                        query += ", " + "'" + dane[i] + "'";
+                        query += ", " + "'" + date[i] + "'";
                     }
                 }
                 query += ")";
@@ -173,7 +173,7 @@ namespace Projekt
             }
         }
         //Metoda obsługująca usuwanie rekordów z bazy danych
-        public void UsunDane(string warunek, string tabela)
+        public void DeleteData(string condition, string table)
         {
             var auth = new Authentication();
             auth.getConnection();
@@ -182,7 +182,7 @@ namespace Projekt
             {
                 con.Open();
                 SQLiteCommand cmd = new SQLiteCommand();
-                string query = @"DELETE FROM " + tabela + " WHERE " + warunek;
+                string query = @"DELETE FROM " + table + " WHERE " + condition;
 
                 cmd.CommandText = query;
                 cmd.Connection = con;

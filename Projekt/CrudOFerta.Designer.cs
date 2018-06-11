@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class CrudOferta
+    partial class OfferCrud
     {
         /// <summary>
         /// Required designer variable.
@@ -107,7 +107,7 @@
             this.btnUsun.TabIndex = 3;
             this.btnUsun.Text = "Usuń";
             this.btnUsun.UseVisualStyleBackColor = true;
-            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
+            this.btnUsun.Click += new System.EventHandler(this.BtnUsun_Click);
             // 
             // txtNazwa
             // 

@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class CrudWizyty
+    partial class VisitCrud
     {
         /// <summary>
         /// Required designer variable.
@@ -62,7 +62,7 @@
             this.btnZmien.TabIndex = 1;
             this.btnZmien.Text = "Zmień Status";
             this.btnZmien.UseVisualStyleBackColor = true;
-            this.btnZmien.Click += new System.EventHandler(this.btnZmien_Click);
+            this.btnZmien.Click += new System.EventHandler(this.BtnZmien_Click);
             // 
             // comboBox1
             // 

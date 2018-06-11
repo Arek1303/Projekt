@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class ZaplanujWizyte
+    partial class PlanVisit
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.CzasPicker = new System.Windows.Forms.DateTimePicker();
+            this.TimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -78,7 +78,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Zaproponuj";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label3
             // 
@@ -89,23 +89,23 @@
             this.label3.Size = new System.Drawing.Size(39, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "<<<";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // CzasPicker
             // 
-            this.CzasPicker.CustomFormat = "HH:mm";
-            this.CzasPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.CzasPicker.Location = new System.Drawing.Point(348, 125);
-            this.CzasPicker.Name = "CzasPicker";
-            this.CzasPicker.Size = new System.Drawing.Size(200, 20);
-            this.CzasPicker.TabIndex = 5;
+            this.TimePicker.CustomFormat = "HH:mm";
+            this.TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TimePicker.Location = new System.Drawing.Point(348, 125);
+            this.TimePicker.Name = "CzasPicker";
+            this.TimePicker.Size = new System.Drawing.Size(200, 20);
+            this.TimePicker.TabIndex = 5;
             // 
             // ZaplanujWizyte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 318);
-            this.Controls.Add(this.CzasPicker);
+            this.Controls.Add(this.TimePicker);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -114,7 +114,7 @@
             this.Name = "ZaplanujWizyte";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ZaplanujWizyte";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.label3_Click);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Label3_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,6 +127,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.DateTimePicker CzasPicker;
+        internal System.Windows.Forms.DateTimePicker TimePicker;
     }
 }

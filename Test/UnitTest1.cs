@@ -9,29 +9,29 @@ namespace Test
     public class UnitTest1
     {
         [TestMethod]
-        public void TestWczytywania()
+        public void LoadTest()
         {
-            var tester = new WczytywanieZBazy();
-            List<string> przypuszczanyWynik = new List<string>() { "2", "Stefan", "Nowak", "Kardiolog" };
-            var testowanyRekord = tester.WczytajRekordy("Lekarz", new List<string> { "ID", "Imie", "Nazwisko", "Specjalizacja" });
-            List<string> testowanyLekarz = new List<string>();
-            foreach (var item in testowanyRekord)
+            var Tester = new WczytywanieZBazy();
+            List<string> AllegedResult = new List<string>() { "2", "Stefan", "Nowak", "Kardiolog" };
+            var TestedRecord = Tester.LoadData("Lekarz", new List<string> { "ID", "Imie", "Nazwisko", "Specjalizacja" });
+            List<string> TestedDoctor = new List<string>();
+            foreach (var item in TestedRecord)
             {
-                if (item[0] == przypuszczanyWynik[0])
+                if (item[0] == AllegedResult[0])
                 {
-                    testowanyLekarz = item;
+                    TestedDoctor = item;
                     break;
                 }
             }
-            CollectionAssert.AreEqual(przypuszczanyWynik, testowanyLekarz);
+            CollectionAssert.AreEqual(AllegedResult, TestedDoctor);
         }
         [TestMethod]
-        public void TestWczytywaniaZWarunkiem()
+        public void LoadWithConditionTest()
         {
             var tester = new WczytywanieZBazy();
-            List<string> przypuszczanyWynik = new List<string>() { "Szczepienie", "Przeciwko Gruźlicy", "50" };
-            var testowanyRekord = tester.WczytajRekordy("Oferta", new List<string> { "Nazwa", "Opis", "Cena" }, "ID=4");
-            CollectionAssert.AreEqual(przypuszczanyWynik, testowanyRekord[0]);
+            List<string> AllegedResult = new List<string>() { "Szczepienie", "Przeciwko Gruźlicy", "50" };
+            var TestedRecotd = tester.LoadData("Oferta", new List<string> { "Nazwa", "Opis", "Cena" }, "ID=4");
+            CollectionAssert.AreEqual(AllegedResult, TestedRecotd[0]);
         }
     }
 }

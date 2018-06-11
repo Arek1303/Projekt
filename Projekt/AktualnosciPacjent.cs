@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Projekt
 {
-    public partial class AktualnosciPacjent : Form
+    public partial class PatientNews : Form
     {
         // Wywołanie okna przeglądania aktualności
-        public AktualnosciPacjent()
+        public PatientNews()
         {
             InitializeComponent();
             //Ustawienie stałych rozmiarów okna
@@ -21,71 +21,70 @@ namespace Projekt
             this.MaximumSize = new Size(668, 582);
             this.MaximizeBox = false;
 
-            List<List<string>> informacjeOAktualnosci;
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> aktualnosc = new List<string>();
-            List<string> tabele = new List<string>
+            List<List<string>> ListOfNews;
+            WczytywanieZBazy Loader = new WczytywanieZBazy();
+            List<string> columns = new List<string>
             {
                 "ID", "Tytul", "Opis", "Data"
             };
-            informacjeOAktualnosci = wczytaj.WczytajRekordy("Aktualnosc", tabele);
+            ListOfNews = Loader.LoadData("Aktualnosc", columns);
             // Generowanie podglądu aktualności w zależności od ich lczby
-            if (informacjeOAktualnosci.Count() > 0)
+            if (ListOfNews.Count() > 0)
             {
-                AktualnoscPierwszaTytul.Text = informacjeOAktualnosci[0][1];
-                AktualnoscPierwszaOpis.Text = informacjeOAktualnosci[0][2];
-                AktualnoscPierwszaData.Text = informacjeOAktualnosci[0][3];
+                FirstTitle.Text = ListOfNews[0][1];
+                FirstDescription.Text = ListOfNews[0][2];
+                FirstDate.Text = ListOfNews[0][3];
             }
             else
             {
-                UkryjPierwsze();
+                HideFirst();
             }
-            if (informacjeOAktualnosci.Count() > 1)
+            if (ListOfNews.Count() > 1)
             {
-                AktualnoscDrugaTytul.Text = informacjeOAktualnosci[1][1];
-                AktualnoscDrugaOpis.Text = informacjeOAktualnosci[1][2];
-                AktualnoscDrugaData.Text = informacjeOAktualnosci[1][3];
-            }
-            else
-            {
-                UkryjDrugie();
-            }
-            if (informacjeOAktualnosci.Count() > 2)
-            {
-                AktualnoscTrzeciaTytul.Text = informacjeOAktualnosci[2][1];
-                AktualnoscTrzeciaOpis.Text = informacjeOAktualnosci[2][2];
-                AktualnoscTrzeciaData.Text = informacjeOAktualnosci[2][3];
+                SecondTitle.Text = ListOfNews[1][1];
+                SecondDescription.Text = ListOfNews[1][2];
+                SecondDate.Text = ListOfNews[1][3];
             }
             else
             {
-                UkryjTrzecie();
+                HideSecond();
+            }
+            if (ListOfNews.Count() > 2)
+            {
+                ThirdTitle.Text = ListOfNews[2][1];
+                ThirdDescription.Text = ListOfNews[2][2];
+                ThirdDate.Text = ListOfNews[2][3];
+            }
+            else
+            {
+                HideThird();
             }
         }
         // Wywołanie powrotu do głównego panelu pacjenta
-        private void label5_Click(object sender, EventArgs e)
+        private void Label5_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Dispose();
         }
         // Wywołanie ukrywania poszczególnych paneli
-        public void UkryjPierwsze()
+        public void HideFirst()
         {
-            AktualnoscPierwszaTytul.Hide();
-            AktualnoscPierwszaOpis.Hide();
-            AktualnoscPierwszaData.Hide();
+            FirstTitle.Hide();
+            FirstDescription.Hide();
+            FirstDate.Hide();
         }
-        public void UkryjDrugie()
+        public void HideSecond()
         {
-            AktualnoscDrugaData.Hide();
-            AktualnoscDrugaOpis.Hide();
-            AktualnoscDrugaTytul.Hide();
+            SecondDate.Hide();
+            SecondDescription.Hide();
+            SecondTitle.Hide();
 
         }
-        public void UkryjTrzecie()
+        public void HideThird()
         {
-            AktualnoscTrzeciaData.Hide();
-            AktualnoscTrzeciaOpis.Hide();
-            AktualnoscTrzeciaTytul.Hide();
+            ThirdDate.Hide();
+            ThirdDescription.Hide();
+            ThirdTitle.Hide();
         }
     }
 }

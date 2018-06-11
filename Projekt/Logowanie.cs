@@ -12,11 +12,11 @@ using System.Windows.Forms;
 namespace Projekt
 {
 
-    public partial class Logowanie : Form
+    public partial class Login : Form
     {
-        private SprawdzaniePoprawnosciLogowania tester = new SprawdzaniePoprawnosciLogowania();
+        private CheckLogin tester = new CheckLogin();
         // Wywołanie panelu logowania
-        public Logowanie()
+        public Login()
         {
             InitializeComponent();
             //Ukrycie hasła logowania
@@ -27,7 +27,7 @@ namespace Projekt
             this.MaximizeBox = false;
         }
         // Wywołanie powrotu to początkowego panelu
-        private void label2_Click(object sender, EventArgs e)
+        private void Label2_Click(object sender, EventArgs e)
         {
             this.Hide();
             Form1 form = new Form1();
@@ -35,45 +35,45 @@ namespace Projekt
             
         }
         //Wywołanie logowania do systemu
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if (txtLogin.Text != string.Empty && txtPassword.Text != string.Empty)
             {
                 // Sprawdzenie logowania jako pacjent
-                var numerID = tester.sprawdzPacjent(txtLogin.Text, txtPassword.Text);
+                var numerID = tester.CheckPatient(txtLogin.Text, txtPassword.Text);
                 if (numerID != 0)
                 {
                     this.Hide();
-                    WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-                    List<string> pacjent = new List<string>();
-                    List<string> tabele = new List<string>
+                    WczytywanieZBazy Load = new WczytywanieZBazy();
+                    List<string> Patient = new List<string>();
+                    List<string> Columns = new List<string>
                     {
                        "ID", "Imie", "Nazwisko", "Wiek","Login", "Haslo"
                     };
-                    string warunek = "ID='" + numerID + "'";
-                    pacjent = wczytaj.WczytajRekordy("Pacjent", tabele, warunek)[0];
+                    string Condition = "ID='" + numerID + "'";
+                    Patient = Load.LoadData("Pacjent", Columns, Condition)[0];
 
-                    EkranGlownyPacjenta ekranPacjent = new EkranGlownyPacjenta(pacjent);
-                    ekranPacjent.Show();
+                    MainPatientForm PatientForm = new MainPatientForm(Patient);
+                    PatientForm.Show();
                 }
                 else
                 {
                     //Sprawdzenie logowania jako lekarz
-                    numerID = tester.sprawdzLekarz(txtLogin.Text, txtPassword.Text);
+                    numerID = tester.ChecKDoctor(txtLogin.Text, txtPassword.Text);
                     if (numerID != 0)
                     {
                         this.Hide();
-                        WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-                        List<string> lekarz = new List<string>();
-                        List<string> tabele = new List<string>
+                        WczytywanieZBazy Load = new WczytywanieZBazy();
+                        List<string> Doctor = new List<string>();
+                        List<string> Columns = new List<string>
                     {
                        "ID", "Imie", "Nazwisko", "Specjalizacja","Login", "Haslo"
                     };
-                        string warunek = "ID='" + numerID + "'";
-                        lekarz = wczytaj.WczytajRekordy("Lekarz", tabele, warunek)[0];
+                        string Condition = "ID='" + numerID + "'";
+                        Doctor = Load.LoadData("Lekarz", Columns, Condition)[0];
 
-                        EkranGlownyLekarza ekranLekarz = new EkranGlownyLekarza(lekarz);
-                        ekranLekarz.Show();
+                        MainDoctorForm DoctorForm = new MainDoctorForm(Doctor);
+                        DoctorForm.Show();
                     }
                     else
                     {

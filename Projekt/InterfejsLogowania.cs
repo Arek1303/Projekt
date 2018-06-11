@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Projekt
 {
     //  Interfejs odpowiedzialny za logowanie
-    interface InterfejsLogowania
+    interface IInterfejsLogowania
     {
-        int sprawdzPacjent(string username, string password);
-        int sprawdzLekarz(string username, string password);
+        int CheckPatient(string username, string password);
+        int ChecKDoctor(string username, string password);
     }
 }

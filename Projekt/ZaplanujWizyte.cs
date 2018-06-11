@@ -11,31 +11,31 @@ using System.Windows.Forms;
 namespace Projekt
 {
     // Formularz obsługujący planowanie wizyt przez pacjenta 
-    public partial class ZaplanujWizyte : Form
+    public partial class PlanVisit : Form
     {
-        string numerID;
-        public ZaplanujWizyte(string numerIdPacjenta)
+        string NumberID;
+        public PlanVisit(string numberIdPatient)
         {
             InitializeComponent();
             //Ustawienie stałych rozmiarów okna
             this.MinimumSize = new Size(668, 382);
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
-            CzasPicker.ShowUpDown = true;
-            numerID = numerIdPacjenta;
+            TimePicker.ShowUpDown = true;
+            NumberID = numberIdPatient;
         }
         // Powrót do głównego panelu
-        private void label3_Click(object sender, EventArgs e)
+        private void Label3_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Dispose();
         }
         // Wysłanie propozycji do lekarza
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> dane = new List<string> { "1", numerID, DataPicker.Value.ToString("yyyy-MM-dd"), "0", CzasPicker.Text };
-            wczytaj.WyslijNoweDane(dane, "Wizyta (IdLekarz,IdPacjent,DataWizyty,Status,Godzina)");
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            List<string> Date = new List<string> { "1", NumberID, DataPicker.Value.ToString("yyyy-MM-dd"), "0", TimePicker.Text };
+            Load.SendData(Date, "Wizyta (IdLekarz,IdPacjent,DataWizyty,Status,Godzina)");
             this.Dispose();
         }
     }

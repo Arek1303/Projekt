@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace Projekt
 {   // Sprawdzanie poprawności zalogowanego użytkownika
-    class SprawdzaniePoprawnosciLogowania : InterfejsLogowania
+    class CheckLogin : IInterfejsLogowania
     {
         // Sprawdzanie poprawności dla pacjenta
-        public int sprawdzPacjent(string username, string password)
+        public int CheckPatient(string username, string password)
         {
             //Nawiązanie połączenia z bazą danych
             var auth = new Authentication();
@@ -43,7 +43,7 @@ namespace Projekt
             }
         }
         // SWprawdzanie poprawnosci logowania dla lekarza
-        public int sprawdzLekarz(string username, string password)
+        public int ChecKDoctor(string username, string password)
         {
             //Nawiązanie połączenia z bazą danych
             var auth = new Authentication();

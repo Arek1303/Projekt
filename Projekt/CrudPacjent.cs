@@ -12,43 +12,42 @@ namespace Projekt
 {
 
     // Wywołanie panelu zarządzania pacjentami
-    public partial class CrudPacjent : Form
+    public partial class PatientCrud : Form
     {
-        public CrudPacjent()
+        public PatientCrud()
         {
             InitializeComponent();
             //Ustawienie stałych rozmiarów okna
             this.MinimumSize = new Size(668, 382);
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
-            MetodaWczytania();
+            LoadData();
 
         }
         // Wczytanie listy pacjentów
-        public void MetodaWczytania()
+        public void LoadData()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<List<string>> informacjeopacjencie;
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> pacjent = new List<string>();
-            List<string> tabele = new List<string>
+            List<List<string>> PatientInformation;
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            List<string> Columns = new List<string>
             {
                 "ID", "Imie", "Nazwisko", "Wiek"
             };
-            informacjeopacjencie = wczytaj.WczytajRekordy("Pacjent", tabele);
-            foreach (var item in informacjeopacjencie)
+            PatientInformation = Load.LoadData("Pacjent", Columns);
+            foreach (var item in PatientInformation)
             {
                 dataGridView1.Rows.Add(item[0], item[1], item[2], item[3]);
             }
         }
         // Usuwanie wybranego pacjenta
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            string idusuwanego = dataGridView1.SelectedCells[0].Value.ToString();
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            wczytaj.UsunDane("id = '" + idusuwanego + "'", "Pacjent");
-            MetodaWczytania();
+            string ChoosenId = dataGridView1.SelectedCells[0].Value.ToString();
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            Load.DeleteData("id = '" + ChoosenId + "'", "Pacjent");
+            LoadData();
         }
         // Powrót do menu głownego
         private void CrudPacjent_FormClosed(object sender, FormClosedEventArgs e)

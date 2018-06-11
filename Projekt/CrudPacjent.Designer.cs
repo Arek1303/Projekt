@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class CrudPacjent
+    partial class PatientCrud
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Usuń Pacjenta";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // CrudPacjent
             // 

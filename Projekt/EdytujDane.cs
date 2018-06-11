@@ -11,21 +11,20 @@ using System.Windows.Forms;
 namespace Projekt
 {
     //Wywołanie panelu edycji danych
-    public partial class EdytujDane : Form
+    public partial class AccountEdit : Form
     {
-        string idPacjent;
-        public EdytujDane(string idPacjent)
+        string PatientID;
+        public AccountEdit(string idPatient)
         {
             InitializeComponent();
-            this.idPacjent = idPacjent;
+            this.PatientID = idPatient;
             this.MinimumSize = new Size(668, 382);
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
         }
         //Wywołanie powrotu do panelu głównego
-        private void label6_Click(object sender, EventArgs e)
+        private void Label6_Click(object sender, EventArgs e)
         {
-
             this.DialogResult = DialogResult.OK;
             this.Dispose();
         }
@@ -36,12 +35,12 @@ namespace Projekt
             this.Dispose();
         }
         // Wywołanie operacji edycji danych pacjent
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            string warunek = "id='" + idPacjent + "'";
-            List<string> dane = new List<string> { warunek, "Imie='" + name.Text + "'", "Nazwisko='" + surname.Text + "'", "Wiek='" + age.Text + "'", "Login='" + login.Text + "'", "Haslo='" + password.Text + "'" };
-            wczytaj.WyslijUpdate(dane, "Pacjent ");
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            string Condition = "id='" + PatientID + "'";
+            List<string> Data = new List<string> { Condition, "Imie='" + name.Text + "'", "Nazwisko='" + surname.Text + "'", "Wiek='" + age.Text + "'", "Login='" + login.Text + "'", "Haslo='" + password.Text + "'" };
+            Load.SendUpdate(Data, "Pacjent ");
             this.DialogResult = DialogResult.OK;
             this.Dispose();
         }

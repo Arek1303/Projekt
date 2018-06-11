@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class ZatwierdzoneWizyty
+    partial class ApproveVisit
     {
         /// <summary>
         /// Required designer variable.
@@ -94,7 +94,7 @@
             this.label3.Size = new System.Drawing.Size(39, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "<<<";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // ZatwierdzoneWizyty
             // 
@@ -108,7 +108,7 @@
             this.Name = "ZatwierdzoneWizyty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ZatwierdzoneWizyty";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.label3_Click);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Label3_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

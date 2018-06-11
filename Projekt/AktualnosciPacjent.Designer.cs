@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class AktualnosciPacjent
+    partial class PatientNews
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.AktualnoscPierwszaData = new System.Windows.Forms.Label();
-            this.AktualnoscDrugaTytul = new System.Windows.Forms.Label();
-            this.AktualnoscTrzeciaTytul = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.AktualnoscPierwszaTytul = new System.Windows.Forms.Label();
-            this.AktualnoscPierwszaOpis = new System.Windows.Forms.RichTextBox();
-            this.AktualnoscDrugaData = new System.Windows.Forms.Label();
-            this.AktualnoscDrugaOpis = new System.Windows.Forms.RichTextBox();
-            this.AktualnoscTrzeciaData = new System.Windows.Forms.Label();
-            this.AktualnoscTrzeciaOpis = new System.Windows.Forms.RichTextBox();
+            this.FirstDate = new System.Windows.Forms.Label();
+            this.SecondTitle = new System.Windows.Forms.Label();
+            this.ThirdTitle = new System.Windows.Forms.Label();
+            this.BtnBack = new System.Windows.Forms.Label();
+            this.FirstTitle = new System.Windows.Forms.Label();
+            this.FirstDescription = new System.Windows.Forms.RichTextBox();
+            this.SecondDate = new System.Windows.Forms.Label();
+            this.SecondDescription = new System.Windows.Forms.RichTextBox();
+            this.ThirdDate = new System.Windows.Forms.Label();
+            this.ThirdDescription = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -51,119 +51,119 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Aktualności";
             // 
-            // AktualnoscPierwszaData
+            // FirstDate
             // 
-            this.AktualnoscPierwszaData.AutoSize = true;
-            this.AktualnoscPierwszaData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.AktualnoscPierwszaData.Location = new System.Drawing.Point(58, 59);
-            this.AktualnoscPierwszaData.Name = "AktualnoscPierwszaData";
-            this.AktualnoscPierwszaData.Size = new System.Drawing.Size(46, 17);
-            this.AktualnoscPierwszaData.TabIndex = 1;
-            this.AktualnoscPierwszaData.Text = "Data1";
+            this.FirstDate.AutoSize = true;
+            this.FirstDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.FirstDate.Location = new System.Drawing.Point(58, 59);
+            this.FirstDate.Name = "FirstDate";
+            this.FirstDate.Size = new System.Drawing.Size(46, 17);
+            this.FirstDate.TabIndex = 1;
+            this.FirstDate.Text = "Data1";
             // 
-            // AktualnoscDrugaTytul
+            // SecondTitle
             // 
-            this.AktualnoscDrugaTytul.AutoSize = true;
-            this.AktualnoscDrugaTytul.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.AktualnoscDrugaTytul.Location = new System.Drawing.Point(171, 188);
-            this.AktualnoscDrugaTytul.Name = "AktualnoscDrugaTytul";
-            this.AktualnoscDrugaTytul.Size = new System.Drawing.Size(46, 17);
-            this.AktualnoscDrugaTytul.TabIndex = 3;
-            this.AktualnoscDrugaTytul.Text = "Data2";
+            this.SecondTitle.AutoSize = true;
+            this.SecondTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.SecondTitle.Location = new System.Drawing.Point(171, 188);
+            this.SecondTitle.Name = "SecondTitle";
+            this.SecondTitle.Size = new System.Drawing.Size(46, 17);
+            this.SecondTitle.TabIndex = 3;
+            this.SecondTitle.Text = "Data2";
             // 
-            // AktualnoscTrzeciaTytul
+            // ThirdTitle
             // 
-            this.AktualnoscTrzeciaTytul.AutoSize = true;
-            this.AktualnoscTrzeciaTytul.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.AktualnoscTrzeciaTytul.Location = new System.Drawing.Point(168, 318);
-            this.AktualnoscTrzeciaTytul.Name = "AktualnoscTrzeciaTytul";
-            this.AktualnoscTrzeciaTytul.Size = new System.Drawing.Size(46, 17);
-            this.AktualnoscTrzeciaTytul.TabIndex = 5;
-            this.AktualnoscTrzeciaTytul.Text = "Data3";
+            this.ThirdTitle.AutoSize = true;
+            this.ThirdTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.ThirdTitle.Location = new System.Drawing.Point(168, 318);
+            this.ThirdTitle.Name = "ThirdTitle";
+            this.ThirdTitle.Size = new System.Drawing.Size(46, 17);
+            this.ThirdTitle.TabIndex = 5;
+            this.ThirdTitle.Text = "Data3";
             // 
-            // label5
+            // BtnBack
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label5.Location = new System.Drawing.Point(26, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "<<<";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.BtnBack.AutoSize = true;
+            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.BtnBack.Location = new System.Drawing.Point(26, 18);
+            this.BtnBack.Name = "BtnBack";
+            this.BtnBack.Size = new System.Drawing.Size(39, 20);
+            this.BtnBack.TabIndex = 9;
+            this.BtnBack.Text = "<<<";
+            this.BtnBack.Click += new System.EventHandler(this.Label5_Click);
             // 
-            // AktualnoscPierwszaTytul
+            // FirstTitle
             // 
-            this.AktualnoscPierwszaTytul.AutoSize = true;
-            this.AktualnoscPierwszaTytul.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.AktualnoscPierwszaTytul.Location = new System.Drawing.Point(171, 59);
-            this.AktualnoscPierwszaTytul.Name = "AktualnoscPierwszaTytul";
-            this.AktualnoscPierwszaTytul.Size = new System.Drawing.Size(46, 17);
-            this.AktualnoscPierwszaTytul.TabIndex = 10;
-            this.AktualnoscPierwszaTytul.Text = "label2";
+            this.FirstTitle.AutoSize = true;
+            this.FirstTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.FirstTitle.Location = new System.Drawing.Point(171, 59);
+            this.FirstTitle.Name = "FirstTitle";
+            this.FirstTitle.Size = new System.Drawing.Size(46, 17);
+            this.FirstTitle.TabIndex = 10;
+            this.FirstTitle.Text = "label2";
             // 
-            // AktualnoscPierwszaOpis
+            // FirstDescription
             // 
-            this.AktualnoscPierwszaOpis.Location = new System.Drawing.Point(346, 59);
-            this.AktualnoscPierwszaOpis.Name = "AktualnoscPierwszaOpis";
-            this.AktualnoscPierwszaOpis.Size = new System.Drawing.Size(251, 107);
-            this.AktualnoscPierwszaOpis.TabIndex = 11;
-            this.AktualnoscPierwszaOpis.Text = "";
+            this.FirstDescription.Location = new System.Drawing.Point(346, 59);
+            this.FirstDescription.Name = "FirstDescription";
+            this.FirstDescription.Size = new System.Drawing.Size(251, 107);
+            this.FirstDescription.TabIndex = 11;
+            this.FirstDescription.Text = "";
             // 
-            // AktualnoscDrugaData
+            // SecondDate
             // 
-            this.AktualnoscDrugaData.AutoSize = true;
-            this.AktualnoscDrugaData.Location = new System.Drawing.Point(66, 191);
-            this.AktualnoscDrugaData.Name = "AktualnoscDrugaData";
-            this.AktualnoscDrugaData.Size = new System.Drawing.Size(35, 13);
-            this.AktualnoscDrugaData.TabIndex = 12;
-            this.AktualnoscDrugaData.Text = "label2";
+            this.SecondDate.AutoSize = true;
+            this.SecondDate.Location = new System.Drawing.Point(66, 191);
+            this.SecondDate.Name = "SecondDate";
+            this.SecondDate.Size = new System.Drawing.Size(35, 13);
+            this.SecondDate.TabIndex = 12;
+            this.SecondDate.Text = "label2";
             // 
-            // AktualnoscDrugaOpis
+            // SecondDescription
             // 
-            this.AktualnoscDrugaOpis.Location = new System.Drawing.Point(346, 188);
-            this.AktualnoscDrugaOpis.Name = "AktualnoscDrugaOpis";
-            this.AktualnoscDrugaOpis.Size = new System.Drawing.Size(251, 107);
-            this.AktualnoscDrugaOpis.TabIndex = 13;
-            this.AktualnoscDrugaOpis.Text = "";
+            this.SecondDescription.Location = new System.Drawing.Point(346, 188);
+            this.SecondDescription.Name = "SecondDescription";
+            this.SecondDescription.Size = new System.Drawing.Size(251, 107);
+            this.SecondDescription.TabIndex = 13;
+            this.SecondDescription.Text = "";
             // 
-            // AktualnoscTrzeciaData
+            // ThirdDate
             // 
-            this.AktualnoscTrzeciaData.AutoSize = true;
-            this.AktualnoscTrzeciaData.Location = new System.Drawing.Point(58, 322);
-            this.AktualnoscTrzeciaData.Name = "AktualnoscTrzeciaData";
-            this.AktualnoscTrzeciaData.Size = new System.Drawing.Size(35, 13);
-            this.AktualnoscTrzeciaData.TabIndex = 14;
-            this.AktualnoscTrzeciaData.Text = "label2";
+            this.ThirdDate.AutoSize = true;
+            this.ThirdDate.Location = new System.Drawing.Point(58, 322);
+            this.ThirdDate.Name = "ThirdDate";
+            this.ThirdDate.Size = new System.Drawing.Size(35, 13);
+            this.ThirdDate.TabIndex = 14;
+            this.ThirdDate.Text = "label2";
             // 
-            // AktualnoscTrzeciaOpis
+            // ThirdDescription
             // 
-            this.AktualnoscTrzeciaOpis.Location = new System.Drawing.Point(346, 318);
-            this.AktualnoscTrzeciaOpis.Name = "AktualnoscTrzeciaOpis";
-            this.AktualnoscTrzeciaOpis.Size = new System.Drawing.Size(251, 102);
-            this.AktualnoscTrzeciaOpis.TabIndex = 15;
-            this.AktualnoscTrzeciaOpis.Text = "";
+            this.ThirdDescription.Location = new System.Drawing.Point(346, 318);
+            this.ThirdDescription.Name = "ThirdDescription";
+            this.ThirdDescription.Size = new System.Drawing.Size(251, 102);
+            this.ThirdDescription.TabIndex = 15;
+            this.ThirdDescription.Text = "";
             // 
-            // AktualnosciPacjent
+            // PatientNews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 558);
-            this.Controls.Add(this.AktualnoscTrzeciaOpis);
-            this.Controls.Add(this.AktualnoscTrzeciaData);
-            this.Controls.Add(this.AktualnoscDrugaOpis);
-            this.Controls.Add(this.AktualnoscDrugaData);
-            this.Controls.Add(this.AktualnoscPierwszaOpis);
-            this.Controls.Add(this.AktualnoscPierwszaTytul);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.AktualnoscTrzeciaTytul);
-            this.Controls.Add(this.AktualnoscDrugaTytul);
-            this.Controls.Add(this.AktualnoscPierwszaData);
+            this.Controls.Add(this.ThirdDescription);
+            this.Controls.Add(this.ThirdDate);
+            this.Controls.Add(this.SecondDescription);
+            this.Controls.Add(this.SecondDate);
+            this.Controls.Add(this.FirstDescription);
+            this.Controls.Add(this.FirstTitle);
+            this.Controls.Add(this.BtnBack);
+            this.Controls.Add(this.ThirdTitle);
+            this.Controls.Add(this.SecondTitle);
+            this.Controls.Add(this.FirstDate);
             this.Controls.Add(this.label1);
-            this.Name = "AktualnosciPacjent";
+            this.Name = "PatientNews";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AktualnosciPacjent";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.label5_Click);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Label5_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,15 +172,15 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label AktualnoscPierwszaData;
-        private System.Windows.Forms.Label AktualnoscDrugaTytul;
-        private System.Windows.Forms.Label AktualnoscTrzeciaTytul;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label AktualnoscPierwszaTytul;
-        private System.Windows.Forms.RichTextBox AktualnoscPierwszaOpis;
-        private System.Windows.Forms.Label AktualnoscDrugaData;
-        private System.Windows.Forms.RichTextBox AktualnoscDrugaOpis;
-        private System.Windows.Forms.Label AktualnoscTrzeciaData;
-        private System.Windows.Forms.RichTextBox AktualnoscTrzeciaOpis;
+        private System.Windows.Forms.Label FirstDate;
+        private System.Windows.Forms.Label SecondTitle;
+        private System.Windows.Forms.Label ThirdTitle;
+        private System.Windows.Forms.Label BtnBack;
+        private System.Windows.Forms.Label FirstTitle;
+        private System.Windows.Forms.RichTextBox FirstDescription;
+        private System.Windows.Forms.Label SecondDate;
+        private System.Windows.Forms.RichTextBox SecondDescription;
+        private System.Windows.Forms.Label ThirdDate;
+        private System.Windows.Forms.RichTextBox ThirdDescription;
     }
 }

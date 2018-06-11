@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class CrudAktualizacja
+    partial class NewsCrud
     {
         /// <summary>
         /// Required designer variable.
@@ -86,7 +86,7 @@
             this.btnUsun.TabIndex = 1;
             this.btnUsun.Text = "Usuń";
             this.btnUsun.UseVisualStyleBackColor = true;
-            this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
+            this.btnUsun.Click += new System.EventHandler(this.BtnUsun_Click);
             // 
             // btnDodaj
             // 
@@ -97,7 +97,7 @@
             this.btnDodaj.TabIndex = 2;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            this.btnDodaj.Click += new System.EventHandler(this.BtnDodaj_Click);
             // 
             // txtTytul
             // 

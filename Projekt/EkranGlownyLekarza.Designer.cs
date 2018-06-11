@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class EkranGlownyLekarza
+    partial class MainDoctorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@
             this.btnPacjenci.TabIndex = 1;
             this.btnPacjenci.Text = "Zarządzanie pacjentami";
             this.btnPacjenci.UseVisualStyleBackColor = true;
-            this.btnPacjenci.Click += new System.EventHandler(this.btnPacjenci_Click);
+            this.btnPacjenci.Click += new System.EventHandler(this.BtnPacjenci_Click);
             // 
             // button1
             // 
@@ -67,7 +67,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Zarządzaj wizytami";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -78,7 +78,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Drukuj Listę Pacjentów";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -89,7 +89,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Wyloguj";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button5
             // 
@@ -100,7 +100,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "Zarządzaj Panelem Aktualności";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // button6
             // 
@@ -111,7 +111,7 @@
             this.button6.TabIndex = 7;
             this.button6.Text = "Zarządzaj Panelem Oferta";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // EkranGlownyLekarza
             // 

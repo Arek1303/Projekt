@@ -23,19 +23,19 @@ namespace Projekt
         }
 
         //Wywołanie przekierowania do panelu logowania
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Logowanie login = new Logowanie();
+            Login login = new Login();
             login.Show();
         }
         //Wywołanie przekierowania do panelu rejestracji
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Rejestracja rejestr = new Rejestracja();
-            rejestr.Show();
+            Registration regist = new Registration();
+            regist.Show();
         }
         //Wywołanie zamknięcia aplikacji
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

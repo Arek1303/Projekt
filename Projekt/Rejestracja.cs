@@ -10,10 +10,10 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 namespace Projekt
 {
-    public partial class Rejestracja : Form
+    public partial class Registration : Form
     {
         // Wywołanie Panelu Rejestracji
-        public Rejestracja()
+        public Registration()
         {
             InitializeComponent();
             password.UseSystemPasswordChar = true;
@@ -24,7 +24,7 @@ namespace Projekt
 
         }
         // Wywołanie powrotu do początkowego panelu
-        private void label6_Click(object sender, EventArgs e) // Strzałka powrotu
+        private void Label6_Click(object sender, EventArgs e) // Strzałka powrotu
         {
             this.Dispose();
             Form1 form = new Form1();
@@ -33,7 +33,7 @@ namespace Projekt
 
         //Wywołanie rejestracji do systemu
         Authentication auth;
-        private void button1_Click(object sender, EventArgs e) //Register Button
+        private void Button1_Click(object sender, EventArgs e) //Register Button
         {
             if (name.Text != string.Empty &&
                surname.Text != string.Empty &&
@@ -41,11 +41,11 @@ namespace Projekt
                password.Text != string.Empty
                 )
             {
-                checkAccount(name.Text);
+                CheckAccount(name.Text);
             }
         }
         // Sprawdzenie istniejącego konta
-        private void checkAccount(string username)
+        private void CheckAccount(string username)
         {
             auth = new Authentication();
             auth.getConnection();
@@ -68,12 +68,12 @@ namespace Projekt
                 }
                 else if (count == 0)
                 {
-                    insertData(name.Text, surname.Text, login.Text, password.Text, age.Text);
+                    InsertData(name.Text, surname.Text, login.Text, password.Text, age.Text);
                 }
             }
         }
         // Metoda wstawiająca dane do bazy, wywoływana w przypadku pomyślnego przejścia przez panel rejestracji
-        private void insertData(string names, string surnames, string logins, string passwords, string ages )
+        private void InsertData(string names, string surnames, string logins, string passwords, string ages )
         {
             // Nawiązanie połączenia z bazą danych
             auth = new Authentication();
@@ -92,7 +92,7 @@ namespace Projekt
                 cmd.Parameters.Add(new SQLiteParameter("@age", ages));
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("sukces", "ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Zostałeś zarejestrowany, przejdź do panelu logowania", "ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

@@ -10,25 +10,25 @@ using System.Windows.Forms;
 
 namespace Projekt
 {
-    public partial class EkranGlownyPacjenta : Form
+    public partial class MainPatientForm : Form
     {
         //Wywołanie głównego panelu pacjenta
-        List<string> informacjeOPacjencie;
-        public EkranGlownyPacjenta(List<string> info)
+        List<string> PatientInformation;
+        public MainPatientForm(List<string> info)
         {
             InitializeComponent();
-            informacjeOPacjencie = info;
-            powitanie.Text = "Witaj " + informacjeOPacjencie[1] + " " + informacjeOPacjencie[2];
+            PatientInformation = info;
+            powitanie.Text = "Witaj " + PatientInformation[1] + " " + PatientInformation[2];
             //Ustawienie stałych rozmiarów okna
             this.MinimumSize = new Size(668, 382);
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
         }
         //Wywołanie powrotu to głównego panelu pacjenta
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (var form = new AktualnosciPacjent())
+            using (var form = new PatientNews())
             {
                 var formResult = form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
@@ -38,9 +38,9 @@ namespace Projekt
             }
         }
         //Wywołanie przejścia do statusów wizyt pacjenta
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
-            using (var form = new ZatwierdzoneWizyty(informacjeOPacjencie[0]))
+            using (var form = new ApproveVisit(PatientInformation[0]))
             {
                 var formResult = form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
@@ -50,17 +50,17 @@ namespace Projekt
             }
         }
         //Wywołanie przejścia do panelu logowania
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
-            Logowanie logow = new Logowanie();
+            Login logow = new Login();
             this.Dispose();
             logow.Show(); 
         }
         //Wywołanie przejścia do panelu wizyt pacjenta
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (var form = new ZaplanujWizyte(informacjeOPacjencie[0]))
+            using (var form = new PlanVisit(PatientInformation[0]))
             {
                 var formResult = form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
@@ -70,25 +70,23 @@ namespace Projekt
             }
         }
         //Wywołaniedze przejścia do panelu edycji danych pacjenta
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
-
             this.Hide();
-            using (var form = new EdytujDane(informacjeOPacjencie[0]))
+            using (var form = new AccountEdit(PatientInformation[0]))
             {
                 var formResult = form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
                 {
                     this.Show();
                 }
-
             }
         }
         //Wywołaniedze przejścia do panelu obserwacji aktualności przychodni
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (var form = new Oferta())
+            using (var form = new Offer())
             {
                 var formResult = form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)

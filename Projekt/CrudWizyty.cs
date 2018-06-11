@@ -11,67 +11,66 @@ using System.Windows.Forms;
 namespace Projekt
 {
     //Wywołanie panelu zarządzania wizytami
-    public partial class CrudWizyty : Form
+    public partial class VisitCrud : Form
     {
-        public CrudWizyty()
+        public VisitCrud()
         {
             InitializeComponent();
             //Ustawienie stałych rozmiarów okna
             this.MinimumSize = new Size(668, 382);
             this.MaximumSize = new Size(668, 382);
             this.MaximizeBox = false;
-            MetodaWczytania();
+            LoadData();
         }
         //Wczytanie wizyt i wyświetlenie ich wraz z odpowiednimi statusami
-        public void MetodaWczytania()
+        public void LoadData()
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            List<List<string>> informacjeOWizycie;
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> pacjent = new List<string>();
-            List<string> tabele = new List<string>
+            List<List<string>> VisitInformation;
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            List<string> Columns = new List<string>
             {
                 "ID", "IdPacjent", "DataWizyty", "Godzina", "Status"
             };
-            informacjeOWizycie = wczytaj.WczytajRekordy("Wizyta", tabele);
+            VisitInformation = Load.LoadData("Wizyta", Columns);
 
-            foreach (var item in informacjeOWizycie)
+            foreach (var item in VisitInformation)
             {
-                var status = item[4];
-                if (status == "0")
+                var state = item[4];
+                if (state == "0")
                 {
-                    status = "Nieprzetworzone";
+                    state = "Nieprzetworzone";
                 }
-                else if (status == "1")
+                else if (state == "1")
                 {
-                    status = "Zatwierdzony";
+                    state = "Zatwierdzony";
                 }
-                else if (status == "2")
+                else if (state == "2")
                 {
-                    status = "Odrzucony";
+                    state = "Odrzucony";
                 }
-                else if (status == "3")
+                else if (state == "3")
                 {
-                    status = "Odbyte";
+                    state = "Odbyte";
                 }
-                var imieOrazNazwisko = WczytajImieOrazNazwiskoPacjenta(item[1]);
-                dataGridView1.Rows.Add(item[0], imieOrazNazwisko, item[2].Substring(0, 10), item[3].Remove(0, 11), status);
+                var Name = LoadName(item[1]);
+                dataGridView1.Rows.Add(item[0], Name, item[2].Substring(0, 10), item[3].Remove(0, 11), state);
             }
         }
         // Metoda zmieniająca status wizyty
-        private void btnZmien_Click(object sender, EventArgs e)
+        private void BtnZmien_Click(object sender, EventArgs e)
         {
-            string wybierzS = WybierzStatus();
-            string idZmienianego = dataGridView1.SelectedCells[0].Value.ToString();
+            string Choose = ChooseState();
+            string ChoosenId = dataGridView1.SelectedCells[0].Value.ToString();
             WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            string warunek = "id='" + idZmienianego + "'";
-            List<string> dane = new List<string> { warunek, "Status='" + wybierzS + "'" };
-            wczytaj.WyslijUpdate(dane, "Wizyta ");
-            MetodaWczytania();
+            string Condition= "id='" + ChoosenId + "'";
+            List<string> Data = new List<string> { Condition, "Status='" + Choose + "'" };
+            wczytaj.SendUpdate(Data, "Wizyta ");
+            LoadData();
         }
         // Modyfikacja w celu czytelności informacji
-        private string WybierzStatus()
+        private string ChooseState()
         {
             if ((string)comboBox1.SelectedItem == "Zatwierdzony")
             {
@@ -90,19 +89,18 @@ namespace Projekt
                 return "0";
             }
         }
-        public string WczytajImieOrazNazwiskoPacjenta(string id)
+        public string LoadName(string id)
         {
-            List<List<string>> informacjeopacjencie;
-            WczytywanieZBazy wczytaj = new WczytywanieZBazy();
-            List<string> pacjent = new List<string>();
-            List<string> tabele = new List<string>
+            List<List<string>> VisitInformation;
+            WczytywanieZBazy Load = new WczytywanieZBazy();
+            List<string> Columns = new List<string>
             {
                 "Imie", "Nazwisko"
             };
-            informacjeopacjencie = wczytaj.WczytajRekordy("Pacjent", tabele, "id='" + id + "'");
-            if (informacjeopacjencie.Count != 0)
+            VisitInformation = Load.LoadData("Pacjent", Columns, "id='" + id + "'");
+            if (VisitInformation.Count != 0)
             {
-                return informacjeopacjencie[0][0] + " " + informacjeopacjencie[0][1];
+                return VisitInformation[0][0] + " " + VisitInformation[0][1];
             }
             else
             {

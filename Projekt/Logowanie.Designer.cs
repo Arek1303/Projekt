@@ -1,6 +1,6 @@
 ﻿namespace Projekt
 {
-    partial class Logowanie
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -58,7 +58,7 @@
             this.label2.Size = new System.Drawing.Size(48, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "<<<";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // txtLogin
             // 
@@ -103,7 +103,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Zaloguj";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label5
             // 
